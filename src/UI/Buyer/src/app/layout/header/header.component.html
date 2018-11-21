@@ -86,9 +86,11 @@
         <a class="nav-link text-nowrap"
            routerLink="/cart"
            routerLinkActive="active"
-           ngbPopover="Item(s) Added to Cart"
+           [ngbPopover]="popContent"
            placement="bottom"
            triggers="manual"
+           (mouseenter)="openMiniCart()"
+           (mouseleave)="closeMiniCart()"
            #desktopPopover="ngbPopover">
           <span class="d-none d-lg-inline">Cart </span>
           <fa-layers class="fa-fw">
@@ -102,3 +104,6 @@
     </ul>
   </div>
 </nav>
+<ng-template #popContent>
+  <shared-mini-cart></shared-mini-cart>
+</ng-template>

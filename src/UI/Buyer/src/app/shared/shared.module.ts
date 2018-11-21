@@ -80,6 +80,7 @@ import { GenericBrowseComponent } from '@app-buyer/shared/components/generic-bro
 import { ModalComponent } from '@app-buyer/shared/components/modal/modal.component';
 import { OrderPaymentListComponent } from '@app-buyer/shared/components/payment-list/order-payment-list.component';
 import { ChangePasswordFormComponent } from '@app-buyer/shared/components/change-password-form/change-password-form.component';
+import { MiniCartComponent } from './mini-cart/mini-cart.component';
 
 @NgModule({
   imports: [
@@ -153,6 +154,7 @@ import { ChangePasswordFormComponent } from '@app-buyer/shared/components/change
     GenericBrowseComponent,
     ModalComponent,
     OrderPaymentListComponent,
+    MiniCartComponent,
   ],
   declarations: [
     ChangePasswordFormComponent,
@@ -181,6 +183,7 @@ import { ChangePasswordFormComponent } from '@app-buyer/shared/components/change
     GenericBrowseComponent,
     ModalComponent,
     OrderPaymentListComponent,
+    MiniCartComponent,
   ],
 
   /**

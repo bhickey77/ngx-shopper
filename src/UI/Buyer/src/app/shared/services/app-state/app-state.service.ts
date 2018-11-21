@@ -11,7 +11,6 @@ export class AppStateService {
   public isAnonSubject: BehaviorSubject<boolean>;
   public isLoggedIn: BehaviorSubject<boolean>;
   public lineItemSubject: BehaviorSubject<ListLineItem>;
-
   public addToCartSubject: Subject<AddToCartEvent>;
 
   constructor() {
