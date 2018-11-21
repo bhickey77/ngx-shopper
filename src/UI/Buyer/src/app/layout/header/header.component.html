@@ -82,28 +82,30 @@
                    placeholderText="Search..."
                    (searched)="searchProducts($event)"></shared-search>
     <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link text-nowrap"
-           routerLink="/cart"
-           routerLinkActive="active"
-           [ngbPopover]="popContent"
-           placement="bottom"
-           triggers="manual"
-           (mouseenter)="openMiniCart()"
-           (mouseleave)="closeMiniCart()"
-           #desktopPopover="ngbPopover">
-          <span class="d-none d-lg-inline">Cart </span>
-          <fa-layers class="fa-fw">
-            <fa-icon [icon]="faShoppingCart"></fa-icon>
-            <fa-layers-counter *ngIf="currentOrder && currentOrder.LineItemCount"
-                               class="badge__counter--large"
-                               [content]="currentOrder.LineItemCount"></fa-layers-counter>
-          </fa-layers>
-        </a>
+      <li class="nav-item dropdown cursor-pointer">
+        <div ngbDropdown>
+          <a class="nav-link text-nowrap"
+             routerLink="/cart"
+             routerLinkActive="active"
+             [ngbPopover]="popContent"
+             placement="bottom"
+             ngbDropdownToggle
+             triggers="manual">
+            <span class="d-none d-lg-inline">Cart </span>
+            <fa-layers class="fa-fw">
+              <fa-icon [icon]="faShoppingCart"></fa-icon>
+              <fa-layers-counter *ngIf="currentOrder && currentOrder.LineItemCount"
+                                 class="badge__counter--large"
+                                 [content]="currentOrder.LineItemCount"></fa-layers-counter>
+            </fa-layers>
+          </a>
+          <div ngbDropdownMenu
+               class="dropdown-menu rounded-bottom fade-in-xs mt-0 position-x-0 position-top-100"
+               aria-labelledby="miniCart">
+            <shared-mini-cart></shared-mini-cart>
+          </div>
+        </div>
       </li>
     </ul>
   </div>
 </nav>
-<ng-template #popContent>
-  <shared-mini-cart></shared-mini-cart>
-</ng-template>

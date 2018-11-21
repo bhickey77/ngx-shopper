@@ -13,7 +13,7 @@ import {
   faSignOutAlt,
   faHome,
 } from '@fortawesome/free-solid-svg-icons';
-import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
+import { NgbPopover, NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { BaseResolveService, AppStateService } from '@app-buyer/shared';
 import {
@@ -41,6 +41,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   @ViewChild('mobilePopover') public mobilePopover: NgbPopover;
   @ViewChild('desktopPopover') public desktopPopover: NgbPopover;
+  public ngbDropdown: NgbDropdown;
 
   faSearch = faSearch;
   faShoppingCart = faShoppingCart;
@@ -74,7 +75,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
           const isMobile = window.innerWidth < 768; // max width for bootstrap's sm breakpoint
           popover = isMobile ? this.mobilePopover : this.desktopPopover;
           popover.close();
-          // popover.ngbPopover = `${event.quantity} Item(s) Added to Cart`;
+          popover.ngbPopover = `${event.quantity} Item(s) Added to Cart`;
         }),
         delay(300),
         tap(() => popover.open()),
@@ -107,21 +108,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
       '/reset-password',
     ];
     return !hiddenRoutes.some((el) => this.router.url.indexOf(el) > -1);
-  }
-
-  openMiniCart() {
-    let popover;
-    const isMobile = window.innerWidth < 768; // max width for bootstrap's sm breakpoint
-    popover = isMobile ? this.mobilePopover : this.desktopPopover;
-    // popover.ngbPopover = `Cart`;
-    popover.open();
-  }
-
-  closeMiniCart() {
-    let popover;
-    const isMobile = window.innerWidth < 768; // max width for bootstrap's sm breakpoint
-    popover = isMobile ? this.mobilePopover : this.desktopPopover;
-    popover.close();
   }
 
   ngOnDestroy() {

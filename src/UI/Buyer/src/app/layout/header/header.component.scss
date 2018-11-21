@@ -6,3 +6,9 @@
         font-size: 45px;
      }
  }
+
+ .dropdown:hover .dropdown-menu {
+    display: block;
+    color: black;
+    width: 900px;
+}

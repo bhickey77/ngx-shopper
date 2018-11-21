@@ -1,3 +1,33 @@
-<p>
-  mini-cart works!
-</p>
+<div>
+  <div *ngIf="(currentOrder$ | async) as order">
+    <!-- <div class="my-3 d-flex justify-content-between">
+      <button class="btn btn-outline-dark"
+              [routerLink]="['/home']">Continue Shopping</button>
+      <button class="btn btn-outline-danger"
+              *ngIf="order.LineItemCount"
+              (click)="cancelOrder()">Cancel Order</button>
+    </div> -->
+    <div class="card bg-light p-3 flex-row justify-content-center"
+         *ngIf="!order.LineItemCount">
+      <p class="mb-0">You do not have any items in your cart</p>
+    </div>
+    <div class="row flex-lg-row-reverse"
+         *ngIf="order.LineItemCount">
+      <!-- <div class="col-lg-4">
+        <button class="btn btn-primary btn-block mb-4 font-weight-bold"
+                routerLink="/checkout">CHECKOUT</button>
+      </div> -->
+      <div class="col-lg-8"
+           *ngIf="productsSet">
+        <shared-lineitem-list-wrapper>
+          <shared-line-item-card *ngFor="let li of lineItems.Items"
+                                 [lineitem]="li"
+                                 [readOnly]="false"
+                                 [productDetails]="getProduct(li)"
+                                 (deletedLineItem)="deleteLineItem($event)"
+                                 (lineItemUpdated)="updateLineItem($event)"></shared-line-item-card>
+        </shared-lineitem-list-wrapper>
+      </div>
+    </div>
+  </div>
+</div>
